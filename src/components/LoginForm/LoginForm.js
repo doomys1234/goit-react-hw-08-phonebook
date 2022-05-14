@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getStatus } from 'redux/auth/authSelectors'
@@ -12,6 +12,15 @@ const [password, setPassword] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isLoggedIn = useSelector(getStatus)
+
+    useEffect(() => {
+        if (isLoggedIn) {
+          navigate('/contacts',{replace:true})
+      }
+    
+      
+    }, [isLoggedIn])
+    
 
 
     
@@ -36,11 +45,10 @@ const [password, setPassword] = useState('')
        
       
         dispatch(operations.logIn({ email, password })); 
-        navigate('/contacts')
-        // if (!isLoggedIn) {
-        //     navigate('/login')
-        //     toast.error('please register or put valid credentials')
-        // }
+        if (isLoggedIn) {
+            toast.success('You successfully logged in')
+        }
+        
         
         setEmail('')
         setPassword('')

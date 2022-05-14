@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useGetContactsQuery, useAddContactsMutation } from 'redux/apiSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import {
   
@@ -7,61 +6,56 @@ import {
   Route,
 } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
-import { filterItems } from './redux/contactSLice';
 
-import { filterSelector } from './redux/selectors';
 import HomePage from 'components/HomePage/HomePage';
 import AppBar from 'components/AppBar/AppBar';
 import Register from 'components/Register/Register';
 import UserName from 'components/UserName/UserName';
 import Title from 'components/Title/Title';
-import Phonebook from './components/Phonebook/Phonebook';
-import Contacts from './components/Contacts/Contacts';
-import shortid from 'shortid';
+
 import s from './App.module.scss';
 import ContactsPage from 'components/ContactsPage/ContactsPage';
 
 function App() {
-  const dispatch = useDispatch();
-  const valueFilter = useSelector(state => filterSelector(state));
-  const { data, isLoading } = useGetContactsQuery();
-  const [addItem, { isLoading: isAdding }] = useAddContactsMutation();
-  const contacts = data;
+  // const dispatch = useDispatch();
+  // const valueFilter = useSelector(state => filterSelector(state));
+  
+ 
 
-  const addContact = e => {
-    const name = e.currentTarget.elements.name.value;
-    const number = e.currentTarget.elements.number.value;
-    console.log(name, number);
-    if (contacts.find(contact => contact.name === name)) {
-      toast.error(`${name} is already exists`);
+  // const addContact = e => {
+  //   const name = e.currentTarget.elements.name.value;
+  //   const number = e.currentTarget.elements.number.value;
+  //   console.log(name, number);
+  //   if (contacts.find(contact => contact.name === name)) {
+  //     toast.error(`${name} is already exists`);
 
-      return;
-    }
+  //     return;
+  //   }
 
-    const newContact = {
-      id: shortid.generate(),
-      name,
-      number,
-    };
+  //   const newContact = {
+  //     id: shortid.generate(),
+  //     name,
+  //     number,
+  //   };
 
-    addItem(newContact);
-    toast.success('Horay! Contact is added :)');
-  };
+  //   addItem(newContact);
+  //   toast.success('Horay! Contact is added :)');
+  // };
 
-  const filterChange = e => {
-    dispatch(filterItems(e.currentTarget.value));
-  };
+  // const filterChange = e => {
+  //   dispatch(filterItems(e.currentTarget.value));
+  // };
 
-  const getNormalizedContacts = contacts => {
-    if (isLoading) {
-      return;
-    }
-    const normalizedFilter = valueFilter.toLowerCase();
-    return contacts.filter(item =>
-      item.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-  const filteredItems = getNormalizedContacts(contacts);
+  // const getNormalizedContacts = contacts => {
+  //   if (isLoading) {
+  //     return;
+  //   }
+  //   const normalizedFilter = valueFilter.toLowerCase();
+  //   return contacts.filter(item =>
+  //     item.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
+  // const filteredItems = getNormalizedContacts(contacts);
 
   return (
     <div className={s.container}>
@@ -73,7 +67,7 @@ function App() {
           <Route path='login' element={<UserName/>}/>
         </Route>
         
-        <Route path='contacts' element={<ContactsPage onSubmit={addContact} adding={isAdding} contacts={filteredItems} valueFilter={valueFilter} filterChange={filterChange} isLoading={isLoading}   />} ></Route>
+        <Route path='contacts' element={<ContactsPage  />} ></Route>
         
         
           
