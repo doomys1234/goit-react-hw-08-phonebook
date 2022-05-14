@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import s from './Phonebook.module.scss';
 
+
 function Phonebook({ onSubmit, adding }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -26,6 +27,7 @@ function Phonebook({ onSubmit, adding }) {
   };
 
   return (
+    <>
     <form
       className={s.form}
       onSubmit={e => {
@@ -60,10 +62,13 @@ function Phonebook({ onSubmit, adding }) {
         Add Contact
       </button>
     </form>
+    
+    </>
+    
   );
 }
 Phonebook.propTypes = {
-  adding: PropTypes.string,
+  adding: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
 };
 
