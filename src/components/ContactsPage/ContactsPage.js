@@ -4,18 +4,17 @@ import { filterItems } from '../../redux/contactSLice';
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
 import { filterSelector } from '../../redux/selectors';
-import Contacts from "components/Contacts/Contacts"
-import Phonebook from "components/Phonebook/Phonebook"
-import Filter from "components/Filter/Filter"
+import Contacts from 'components/Contacts/Contacts';
+import Phonebook from 'components/Phonebook/Phonebook';
+import Filter from 'components/Filter/Filter';
 export default function ContactsPage() {
-
-    const { data, isLoading } = useGetContactsQuery();
-    const [addItem, { isLoading: isAdding }] = useAddContactsMutation();
-    const dispatch = useDispatch();
+  const { data, isLoading } = useGetContactsQuery();
+  const [addItem, { isLoading: isAdding }] = useAddContactsMutation();
+  const dispatch = useDispatch();
   const valueFilter = useSelector(state => filterSelector(state));
-    const contacts = data;
-    
-     const addContact = e => {
+  const contacts = data;
+
+  const addContact = e => {
     const name = e.currentTarget.elements.name.value;
     const number = e.currentTarget.elements.number.value;
     console.log(name, number);
@@ -49,13 +48,16 @@ export default function ContactsPage() {
     );
   };
   const filteredItems = getNormalizedContacts(contacts);
-    
-    return (
-        <>
-            <Phonebook onSubmit={addContact} adding={isAdding}  />
-            <Filter value={valueFilter} onChange={filterChange} />
-            {filteredItems ?<Contacts contacts={filteredItems} isLoading={isLoading}/>:<h3>You have no contacts yet</h3>}
-        </>
-        
-    )
+
+  return (
+    <>
+      <Phonebook onSubmit={addContact} adding={isAdding} />
+      <Filter value={valueFilter} onChange={filterChange} />
+      {filteredItems ? (
+        <Contacts contacts={filteredItems} isLoading={isLoading} />
+      ) : (
+        <h3>You have no contacts yet</h3>
+      )}
+    </>
+  );
 }

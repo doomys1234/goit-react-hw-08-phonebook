@@ -2,8 +2,7 @@ import { Outlet } from 'react-router-dom';
 import s from './HomePage.module.scss';
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logoApp from '../../icons/phone-book-icon-psd.png'
-
+import logoApp from '../../icons/phone-book-icon-psd.png';
 
 export default function HomePage() {
   const [showButton, setShowButton] = useState(() => {
@@ -16,8 +15,7 @@ export default function HomePage() {
   useEffect(() => {
     if (path === '/') {
       setShowButton(true);
-      localStorage.setItem('isButtonHidden', JSON.stringify(false))
-      
+      localStorage.setItem('isButtonHidden', JSON.stringify(false));
     } else {
       setShowButton(false);
     }
@@ -26,22 +24,34 @@ export default function HomePage() {
   const showAuthButton = () => {
     navigate('/login');
     setShowButton(false);
-    localStorage.setItem('isButtonHidden', JSON.stringify(false))
+    localStorage.setItem('isButtonHidden', JSON.stringify(false));
   };
 
   return (
     <>
       <div>
-      <img className={s.image}src={logoApp} width='400px' alt='logo  ' />
-      <Outlet />
-      {showButton && (
-        <button onClick={showAuthButton} className={s.button} type="button" >
-          Try it now
-        </button>
-      )}
-    </div>
-    <footer className={s.footer}><span className={s.span}>© Developped by <a href='https://github.com/doomys1234' className={s.link} target='_blank' rel='noopener noreferrer' aria-label='GitHub Profile'>Maksym Rydenko</a></span></footer>
+        <img className={s.image} src={logoApp} width="400px" alt="logo  " />
+        <Outlet />
+        {showButton && (
+          <button onClick={showAuthButton} className={s.button} type="button">
+            Try it now
+          </button>
+        )}
+      </div>
+      <footer className={s.footer}>
+        <span className={s.span}>
+          © Developped by{' '}
+          <a
+            href="https://github.com/doomys1234"
+            className={s.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+          >
+            Maksym Rydenko
+          </a>
+        </span>
+      </footer>
     </>
-    
   );
 }

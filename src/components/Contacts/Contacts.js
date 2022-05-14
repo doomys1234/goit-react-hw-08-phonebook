@@ -2,17 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './Contacts.module.scss';
 import ContactListItem from './ContactsListItem';
-import Filter from 'components/Filter/Filter';
 export default function Contacts({ contacts }) {
   return (
     <>
-    <ul className={s.contacts}>
-      {contacts.map(({ id, name, number }) => (
-        <ContactListItem key={id} id={id} name={name} number={number} />
-      ))}
+      <ul className={s.contacts}>
+        {contacts.map(({ id, name, number }) => (
+          <ContactListItem key={id} id={id} name={name} number={number} />
+        ))}
       </ul>
-      </>
-
+    </>
   );
 }
 
