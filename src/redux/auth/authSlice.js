@@ -11,7 +11,7 @@ const initialState = {
     
 };
 
-const authReducer = createSlice({
+export const authReducer = createSlice({
     name: 'auth',
     initialState,
     
