@@ -12,7 +12,7 @@ import App from './App';
 ReactDOM.createRoot(document.getElementById('root')).render(
  <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename='/https://github.com/doomys1234/goit-react-hw-08-phonebook/'>
+      <BrowserRouter basename='/goit-react-hw-08-phonebook/'>
         <App />
         </BrowserRouter>
     </Provider>

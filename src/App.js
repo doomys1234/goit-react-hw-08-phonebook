@@ -21,8 +21,7 @@ function App() {
           <Route path="register" element={<Register />} />
           <Route path="login" element={<UserName />} />
         </Route>
-
-        <Route path="contacts" element={<ContactsPage />}></Route>
+        <Route path="contacts" element={<ContactsPage />} />
       </Routes>
 
       <ToastContainer

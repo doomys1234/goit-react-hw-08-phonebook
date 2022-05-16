@@ -1,6 +1,9 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import operations from 'redux/auth/authOperations';
+import { authSelectors } from 'redux/auth/authSelectors';
 import s from './RegisterForm.module.scss';
 
 export default function Form() {
@@ -8,6 +11,17 @@ export default function Form() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const isLoggedIn = useSelector(authSelectors.getStatus)
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/contacts', { replace: true })
+      toast.success('Welcome on a board')
+    }
+    
+  }, [isLoggedIn,navigate])
+  
 
   const handleChange = e => {
     const name = e.currentTarget.name;
