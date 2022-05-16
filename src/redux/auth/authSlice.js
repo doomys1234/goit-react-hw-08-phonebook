@@ -28,7 +28,7 @@ export const authReducer = createSlice({
         },
         [authOperations.logOut.fulfilled](state) {
             state.user = { name: null, email: null };
-            state.tokem = null;
+            state.token = null;
             state.isLoggedIn = false;
         },
     },

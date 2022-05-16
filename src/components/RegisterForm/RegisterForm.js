@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import operations from 'redux/auth/authOperations';
-import { authSelectors } from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
 import s from './RegisterForm.module.scss';
 
 export default function Form() {

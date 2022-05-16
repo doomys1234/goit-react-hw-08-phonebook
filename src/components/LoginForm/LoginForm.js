@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStatus } from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
 import operations from 'redux/auth/authOperations';
 import s from './LoginForm.module.scss';
 import { toast } from 'react-toastify';
@@ -11,7 +11,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLoggedIn = useSelector(getStatus);
+  const isLoggedIn = useSelector(authSelectors.getStatus);
 
   useEffect(() => {
     if (isLoggedIn) {

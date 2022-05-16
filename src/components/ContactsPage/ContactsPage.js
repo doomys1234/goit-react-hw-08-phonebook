@@ -5,7 +5,7 @@ import { filterItems } from '../../redux/contactSLice';
 import shortid from 'shortid';
 import { toast } from 'react-toastify';
 import { filterSelector } from '../../redux/selectors';
-import { authSelectors } from 'redux/auth/authSelectors';
+import authSelectors from 'redux/auth/authSelectors';
 import Contacts from 'components/Contacts/Contacts';
 import Phonebook from 'components/Phonebook/Phonebook';
 import Filter from 'components/Filter/Filter';
