@@ -45,7 +45,6 @@ export default function Form() {
     e.preventDefault();
     console.log('submit');
     dispatch(operations.register({ name, email, password }));
-    // addUser({ name:name, email: email, password: password })
     setName('');
     setEmail('');
     setPassword('');
